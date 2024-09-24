@@ -1,13 +1,27 @@
+use std::thread::sleep;
+use std::time::Duration;
 use serde_json::Value::Number;
 use serde_json::Value;
 
-struct BerlinsWeather {
+struct BerlinsWeatherAPI {
 
 }
 
-impl BerlinsWeather {
-    fn new() -> BerlinsWeather {
-        BerlinsWeather {
+impl BerlinsWeatherAPI {
+    fn new() -> BerlinsWeatherAPI {
+        BerlinsWeatherAPI {
+
+        }
+    }
+}
+
+struct BerlinsWeatherScraper {
+
+}
+
+impl BerlinsWeatherScraper {
+    fn new() -> BerlinsWeatherScraper {
+        BerlinsWeatherScraper {
 
         }
     }
@@ -26,6 +40,8 @@ impl BerlinsWeather {
 
 #[tokio::main]
 async fn main() {
-    let mut bw = BerlinsWeather::new();
-    bw.request_weather_datapoint().await;
+    let mut bw = BerlinsWeatherScraper::new();
+    loop {
+        bw.request_weather_datapoint().await;
+    }
 }
